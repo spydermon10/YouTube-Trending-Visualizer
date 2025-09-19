@@ -2,6 +2,9 @@
 
 A **Flask Web App** that visualizes YouTube trending videos dataset with interactive plots using **Pandas, Matplotlib, and Seaborn**.  
 Supports filtering by **video categories** and provides multiple plots for insights.
+---
+
+DATASET WAS RETRIEVED FROM KAGGLE (https://www.kaggle.com/datasets/rsrishav/youtube-trending-video-dataset?select=IN_youtube_trending_data.csv)
 
 ---
 
