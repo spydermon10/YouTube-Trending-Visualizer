@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section>
+    <form method="get" action="/visualize">
+      <div class="controls">
+        <div>
+          <label for="category">Category:</label><br>
+          <select id="category" name="category">
+            <option value="__all__">-- All Categories --</option>
+            {% for c in categories %}
+              <option value="{{c}}" {% if c==selected %}selected{% endif %}>{{c}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+          <label for="plot">Visualization:</label><br>
+          <select id="plot" name="plot">
+            <option value="views_dist">Views Distribution</option>
+            <option value="top_categories">Top Categories by Views</option>
+            <option value="likes_vs_views">Likes vs Views (scatter)</option>
+            <option value="like_ratio">Like Ratio Distribution</option>
+            <option value="publish_hour">Uploads by Hour</option>
+            <option value="corr">Engagement Correlation</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="sample">Sample size (for scatter):</label><br>
+          <input type="number" id="sample" name="sample" value="5000" min="100" max="50000">
+        </div>
+
+        <div style="align-self: flex-end">
+          <button type="submit">Show</button>
+        </div>
+      </div>
+    </form>
+
+    <hr>
+
+    {% if plot_url %}
+      <h3>Visualization: {{ title }}</h3>
+      <img src="{{ plot_url }}" alt="plot" style="max-width:100%;height:auto;border:1px solid #ddd;padding:8px;background:#fafafa"/>
+    {% else %}
+      <p>Select options above and click <strong>Show</strong> to generate a plot.</p>
+    {% endif %}
+
+  </section>
+{% endblock %}
